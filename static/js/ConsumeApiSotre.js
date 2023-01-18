@@ -4,9 +4,7 @@
 
     async function getData(){
         try {
-            let res= await  fetch("http://localhost:8080/User/Enterprises",{
-                method: 'POST'
-            })
+            let res= await  fetch("http://localhost:8080/api/enterprise/findAll")
             json = await res.json()
             console.log(res,json)
 
@@ -15,7 +13,7 @@
                 $div.setAttribute("class","col-sm-5  col-md-5 col-lg-5")
 
                 const $img =  document.createElement("img")
-                $img.setAttribute("class","card-img-top")
+                $img.setAttribute("class","images")
                 $img.setAttribute("src",`${enterprise.imagePath}`)
 
                 const $divBody = document.createElement("div")
@@ -33,8 +31,9 @@
                 $pPhone.setAttribute("class","card-text")
                 $pPhone.innerHTML=`Teléfono: ${enterprise.phone}`
 
-                const $a = document.createElement("p")
+                const $a = document.createElement("a")
                 $a.setAttribute("class","btn btn-primary")
+                $a.setAttribute("href","store_description.html")
                 $a.innerHTML='Ver Productos'
 
                 $div.appendChild($img)
@@ -59,3 +58,4 @@
 
     getData();
 })();
+
