@@ -33,7 +33,7 @@
 
                 const $a = document.createElement("a")
                 $a.setAttribute("class","btn btn-primary")
-                $a.setAttribute("href","store_description.html")
+                $a.setAttribute("href",`store_description.html?id=${enterprise.id}`)
                 $a.innerHTML='Ver Productos'
 
                 $div.appendChild($img)
