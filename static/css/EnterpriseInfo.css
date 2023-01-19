@@ -5,6 +5,12 @@
     margin-top: 10px;
 
 }
+.images_storedesc{
+  width: 400px;
+  height: 400px;
+  text-align: center;
+}
+
 
 
 :root {
