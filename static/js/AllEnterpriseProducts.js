@@ -54,7 +54,7 @@ let id
                 $div.setAttribute("class","col")
 
                 const $img =  document.createElement("img")
-                $img.setAttribute("class","images")
+                $img.setAttribute("class","images_storedesc")
                 $img.setAttribute("src",`${product.imagePath}`)
 
                 const $divBody = document.createElement("div")
