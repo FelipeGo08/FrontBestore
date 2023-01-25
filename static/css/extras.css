@@ -1,4 +1,59 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
 
-body{
-    font-family: "Raleway", sans-serif;
-  }
+
+.accesibilidad-btn {
+  position: fixed;
+  right: 0;
+  transform: translateY(16.5%);
+}
+
+.accesibilidad-btn i {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+#accesibilidadMenu {
+  position: fixed;
+  right: 52px;
+  transform: translateY(20%);
+  width: 200px;
+  padding: 5px;
+  background-color: #47474c;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0.3, 0.3);
+  z-index: 9999;
+  text-align: right;
+}
+
+#cambiar {
+  margin-left: 0;
+  margin-right: 0;
+  background-color: white;
+}
+
+#cambiarTamaño {
+  width: 75%;
+}
+
+#cambioT {
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-bottom: 1px;
+  text-align: center;
+  width: 10%;
+}
+#cambioC {
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-bottom: 1px;
+  text-align: center;
+  width: 10%;
+}
+
+.otro {
+  color: rgb(72, 79, 79);
+  padding-right: 12px;
+  padding-left: 12px;
+  padding-top: 10%;
+}
