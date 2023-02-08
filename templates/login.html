@@ -14,6 +14,12 @@
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
 	<title>Iniciar Sesión</title>
+	<style>
+		#validacionCapt{
+			color: rgb(255, 0, 0);
+			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		}
+	</style>
 
 </head>
 
@@ -38,73 +44,79 @@
 					<a class="nav-link" href="store.html">Tiendas</a>
 				</li>
 
-					<li class="nav-item">
-						<a class="nav-link" href="about.html">¿Quiénes Somos?</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Mi cuenta
-						</a>
-						<div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Perfil</a>
-							<a class="dropdown-item" href="#">Cambiar contraseña</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</nav>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-					<div class="card card-signin my-5">
-						<div class="card-body text-center">
-							<img src="../static/img/Page/logo2.png" aria-label="Placeholder: 400x400"
+				<li class="nav-item">
+					<a class="nav-link" href="about.html">¿Quiénes Somos?</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Mi cuenta
+					</a>
+					<div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Perfil</a>
+						<a class="dropdown-item" href="#">Cambiar contraseña</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+				<div class="card card-signin my-5">
+					<div class="card-body text-center">
+						<img src="../static/img/Page/logo2.png" aria-label="Placeholder: 400x400"
 							preserveAspectRatio="xMidYMid slice" focusable="false" width="40%">
-							<br><br>
-							<h5 class="card-title text-center">Iniciar Sesión</h5>
-							<br>
-							<form class="form-signin">
-								<div class="form-label-group">
-									<input type="email" id="inputEmail" class="form-control" placeholder="Dirección de Email"
-										required autofocus>
-								</div>
-								<hr>
-								<div class="form-label-group">
-									<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña"
-										required>
-								</div>
-								<hr>
-								<div class="custom-control custom-checkbox mb-3">
-									<input type="checkbox" class="custom-control-input" id="customCheck1">
-									<label class="custom-control-label" for="customCheck1">Recordar contraseña</label>
-								</div>
+						<br><br>
+						<h5 class="card-title text-center">Iniciar Sesión</h5>
+						<br>
+						<form class="form-signin" onsubmit="return validarCaptcha()">
+							<div class="form-label-group">
+								<input type="email" id="inputEmail" class="form-control"
+									placeholder="Dirección de Email" required autofocus>
+							</div>
+							<hr>
+							<div class="form-label-group">
+								<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña"
+									required>
+							</div>
+							<hr>
+							<div class="custom-control custom-checkbox mb-3">
+								<input type="checkbox" class="custom-control-input" id="customCheck1">
+								<label class="custom-control-label" for="customCheck1">Recordar contraseña</label>
+							</div>
+							<div class="mb-3 mt-3">
 								<button id="submitsignin" class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="submit" disabled>Ingresar</button>
-	
+									type="submit">Ingresar</button>
+							</div>
+							<div class="mb-3 mt-3">
 								<a href="register.html"
 									class="btn btn-lg btn-secondary btn-block text-uppercase">Registrarse</a>
-							</form>
-							<hr class="my-4">
-							<div id="recaptcha" class="text-center">
-								<h6>Prueba que no eres un robot</h6>
-								<label id="pregunta"></label>
-								<input type="text" id="respuesta" class="form-control">
-								<hr>
-								<button id="verificar-btn" onclick="verificarRespuesta()"
-									class="btn btn-primary text-uppercase">Verificar</button>
-								<hr>
-								<label id="respuestaTxt"></label>
 							</div>
+							<div class="mb-3 mt-3" id="validacionCapt">
+							</div>
+						</form>
+						<hr class="my-4">
+						<div id="recaptcha" class="text-center">
+							<h6>Prueba que no eres un robot</h6>
+							<label id="pregunta"></label>
+							<input type="text" id="respuesta" class="form-control">
+							<hr>
+							<button id="verificar-btn" onclick="verificarRespuesta()"
+								class="btn btn-primary text-uppercase">Verificar</button>
+							<hr>
+							<label id="respuestaTxt"></label>
 						</div>
-						
 					</div>
+
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	</div>
 </body>

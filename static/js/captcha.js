@@ -3,8 +3,7 @@ let num2 = Math.floor(Math.random() * 10);
 
 let operacion = Math.floor(Math.random() * 3);
 let pregunta, respuestaCorrecta;
-
-let validacion
+let validacion = false
 
 switch (operacion) {
     case 0:
@@ -64,10 +63,25 @@ function verificarRespuesta() {
         generarOperacion()
     }
     if (validacion) {
-        let submit = document.getElementById("submitsignin")
-        submit.removeAttribute("disabled");
-        submit.setAttribute("enable", true);
+        // let submit = document.getElementById("submitsignin")
+        let respuesta = document.getElementById("validacionCapt")
+        respuesta.innerHTML = ""
+        // submit.removeAttribute("disabled");
+        // submit.setAttribute("enable", true);
         let element = document.getElementById("recaptcha");
         if (element) element.remove();
+
+    }
+}
+
+function validarCaptcha(){
+    let respuesta = document.getElementById("validacionCapt")
+
+    if (validacion) {
+        respuesta.innerHTML = ""
+        return true
+    }else{
+        respuesta.innerHTML = "Por favor asegurate de completar el Recaptcha en la parte inferior"
+        return false
     }
 }
