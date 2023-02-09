@@ -26,6 +26,7 @@ btnP.onclick = function () {
     modalInt1.style.width = "40%";
     modalInt1.style.marginTop = "10%";
     modalInt1.style.verticalAlign = "middle";
+    modalP.style.overflow = "auto";
 }
 
 btnE.onclick = function () {

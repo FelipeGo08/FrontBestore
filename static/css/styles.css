@@ -24,6 +24,7 @@
     padding: 20px;
     border: 1px solid #888;
   }
+  
   .close1, .close2, .close3 {
     color: #aaa;
     float: right;
@@ -41,3 +42,16 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  #mapaSitio ul {
+    list-style-type: none;
+    padding-left: 20px;
+    font-size: 1.5rem;
+  }
+  
+  #mapaSitio li::before {
+    content: "⇝";
+    /* ➭ */
+    padding-right: 5px;
+  }
+ 
