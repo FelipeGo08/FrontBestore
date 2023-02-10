@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>Product CRUD</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="main.html">BSTORE</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link active disabled" href="main.html">Principal</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="register.html">Register</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="store.html">Tiendas</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="about.html">¿Quiénes Somos?</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Mi cuenta
+					</a>
+					<div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Perfil</a>
+						<a class="dropdown-item" href="#">Cambiar contraseña</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container">
+        <h1 class="text-center my-5">Product CRUD</h1>
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addProductModal">
+            Add Product
+        </button>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="productList">
+                <tr id="product-${product.id}">
+                    <td>Audifonos</td>
+                    <td>10000</td>
+                    <td>Xiaomi</td>
+                    <td><img src="${product.image}" alt="" class="img-thumbnail" width="100"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary editProductBtn"
+                            data-id="${product.id}">Edit</button>
+                        <button type="button" class="btn btn-danger deleteProductBtn"
+                            data-id="${product.id}">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                placeholder="Enter product name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" id="price" name="price"
+                                placeholder="Enter product price" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Descripción</label>
+                            <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control-file" id="image" name="image"
+                                accept="image/png, image/jpeg" required>
+                            <small class="form-text text-muted">Accepts only png and jpeg files with size less than 20
+                                MB.</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addProduct()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Product Modal -->
+    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProductForm">
+                        <input type="hidden" id="editId" name="id">
+                        <div class="form-group">
+                            <label for="editName">Name</label>
+                            <input type="text" class="form-control" id="editName" name="name"
+                                placeholder="Enter product name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPrice">Price</label>
+                            <input type="number" class="form-control" id="editPrice" name="price"
+                                placeholder="Enter product price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDescription">Descripción</label>
+                            <textarea class="form-control" id="editDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editImage">Image</label>
+                            <input type="file" class="form-control-file" id="editImage" name="image">
+                            <img src="" alt="" id="editPreview" class="img-thumbnail my-3">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="updateProductBtn">Update Product</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Get products list
+            function getProducts() {
+                $.ajax({
+                    url: '',
+                    type: 'GET',
+                    success: function (response) {
+                        let products = JSON.parse(response);
+                        let productList = $('#productList');
+                        productList.html('');
+                        products.forEach(product => {
+                            productList.append(`
+              <tr id="product-${product.id}">
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td>${product.description}</td>
+                <td><img src="${product.image}" alt="" class="img-thumbnail" width="100"></td>
+                <td>
+                  <button type="button" class="btn btn-primary editProductBtn" data-id="${product.id}">Edit</button>
+                  <button type="button" class="btn btn-danger deleteProductBtn" data-id="${product.id}">Delete</button>
+                </td>
+              </tr>`);
+                        });
+                    }
+                });
+            }
+
+            getProducts();
+
+            // Add product
+            $('#addProductForm').submit(function (e) {
+                e.preventDefault();
+                let formData = new FormData(this);
+                $.ajax({
+                    url: '',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $('#addProductModal').modal('hide');
+                        $('#addProductForm')[0].reset();
+                        getProducts();
+                    }
+                });
+            });
+
+            // Edit product
+            $(document).on('click', '.editProductBtn', function () {
+                let id = $(this).data('id');
+                $.ajax({
+                    url: '',
+                    type: 'GET',
+                    data: { id: id },
+                    success: function (response) {
+                        let product = JSON.parse(response);
+                        $('#editId').val(product.id);
+                        $('#editName').val(product.name);
+                        $('#editPrice').val(product.price);
+                        $('#editDescription').val(product.description);
+                        $('#editImage').val(product.image);
+                        $('#editProductModal').modal('show');
+                    }
+                });
+            });
+            $('#editProductForm').submit(function (e) {
+                e.preventDefault();
+                let formData = new FormData(this);
+                $.ajax({
+                    url: '',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $('#editProductModal').modal('hide');
+                        $('#editProductForm')[0].reset();
+                        getProducts();
+                    }
+                });
+            });
+
+            // Delete product
+            $(document).on('click', '.deleteProductBtn', function () {
+                let id = $(this).data('id');
+                $.ajax({
+                    url: '',
+                    type: 'GET',
+                    data: { id: id },
+                    success: function (response) {
+                        $(`#product-${id}`).remove();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
