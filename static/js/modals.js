@@ -37,9 +37,9 @@ btnE.onclick = function () {
 }
 btnM.onclick = function () {
     modalM.style.display = "block";
-    modalInt3.style.width = "40%";
-    modalInt3.style.height = "40%";
-    modalInt3.style.marginTop = "10%";
+    modalInt3.style.width = "70%";
+    modalInt3.style.height = "500px";
+    modalInt3.style.margin="auto auto auto";
 }
 // cerrar modal
 btnA.onclick = function (){

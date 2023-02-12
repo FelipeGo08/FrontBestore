@@ -7,7 +7,7 @@
   color: #797474;
 }
 
-.modal {
+  .modal {
     display: none;
     z-index: 1;
     left: 0;
@@ -55,3 +55,11 @@
     padding-right: 5px;
   }
  
+#response{
+  color: red;
+}
+
+#map{
+  width: 70%;
+  height: 500px;
+}

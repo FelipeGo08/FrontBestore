@@ -19,27 +19,23 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="main.html">BSTORE</a>
+        <img src="../static/img/Page/logo.png" aria-label="Placeholder: 400x400" focusable="false" width="1.8%">
+   		<a class="navbar-brand" href="indexLogin.html">BSTORE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                
                 <li class="nav-item">
-                    <a class="nav-link active disabled" href="main.html">Principal</a>
+                    <a class="nav-link" href="store.html">Tiendas disponibles</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="productsFilter.html">Encontrar productos</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="store.html">Tiendas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">¿Quiénes Somos?</a>
-                </li>
+                
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
@@ -75,7 +71,7 @@
                         <span class="close1">&times;</span>
                     </div>
                     <!-- <h4 class="card-title text-center">Completa la información faltante para terminar el registro</h4> -->
-                    <form>
+                    <form id="personForm">
                         <h5 class="card-title text-center">Datos personales</h5>
                         <hr>
                         <div class="form-label-group d-flex">
@@ -110,7 +106,7 @@
                     <div class="justify-content-end d-flex">
                         <span class="close2">&times;</span>
                     </div>
-                    <form onsubmit="return validar()">
+                    <form id="enterpriseForm" onsubmit="return validar()">
                         <h5 class="card-title text-center">Datos personales</h5>
                         <hr>
                         <div class="form-label-group d-flex">
@@ -154,8 +150,6 @@
                         <div class="form-label-group">
                             <a id="btMaps" class="btn btn-lg btn-success btn-block text-uppercase" >Selecciona la
                                 ubicación</a>
-                            <div id="modalApi">
-                            </div>
                         </div>
                         <hr>
                         <div class="mb-3 mt-3">
@@ -171,11 +165,12 @@
                     <div class="justify-content-end d-flex">
                         <span class="close3">&times;</span>
                     </div>
-                    <div>
-                        
-                    </div>
+                    
                     <div>
                         <a class="btn btn-sm btn-primary btn-block" id="btAceptar">Aceptar </a>
+                    </div>
+                    <div class ="container" id="map">
+
                     </div>
                 </div>
             </div>
@@ -185,4 +180,5 @@
 
 <script src="../static/js/modals.js"></script>
 <script src="../static/js/metodos.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBo8INTP-cwImAhUNGL2jDIPniETyMOHr8&callback=iniciarMap"></script>
 </html>
