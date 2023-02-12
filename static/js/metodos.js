@@ -5,6 +5,8 @@ let email = urlParams.get('email');
 console.log(email)
 console.log(valores);
 
+let location = "4.148862,-73.621603"
+
 var direccion = document.getElementById("crearUbicacion");
 var validacionDirect = document.getElementById("validacionDirec");
 
@@ -49,14 +51,19 @@ personForm.addEventListener('submit', (e) => {
 
   
   
-    fetch("http://localhost:8080/api/site/login",{
+    fetch("http://localhost:8080/api/site/lastStep",{
         method:'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "email":correo.value,
-            "password":pass.value,
+            "username":correo.value,
+            "person": {
+                "id": id,
+                "name":nombres,
+                "lastName": apellidos,
+                "phone": telefono
+            },
         }
         )
       }).then(res=>{
@@ -93,14 +100,25 @@ enterpriseForm.addEventListener('submit', (e) => {
   
     
     
-    fetch("http://localhost:8080/api/site/login",{
+    fetch("http://localhost:8080/api/site/lastStep",{
         method:'POST',
         headers: {
            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "email":correo.value,
-            "password":pass.value,
+            "username":correo.value,
+            "person": {
+                "id": id,
+                "name":nombres,
+                "lastName": apellidos,
+                "phone": telefono
+            },
+            "enterprise":{
+                "nit": nit,
+                "name": nombre,
+                "location": location,
+                "phone": telefonoE
+            },
         }
         )
         }).then(res=>{
