@@ -1,11 +1,11 @@
-const valores = window.location.search;
+const valores = window.location.search
 const urlParams = new URLSearchParams(valores);
 
 let email = urlParams.get('email');
 console.log(email)
 console.log(valores);
 
-let location = "4.148862,-73.621603"
+let locationEnterprise = "4.148862,-73.621603"
 
 var direccion = document.getElementById("crearUbicacion");
 var validacionDirect = document.getElementById("validacionDirec");
@@ -57,13 +57,13 @@ personForm.addEventListener('submit', (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username":correo.value,
+            "username":email,
             "person": {
-                "id": id,
-                "name":nombres,
-                "lastName": apellidos,
-                "phone": telefono
-            },
+                "id": id.value,
+                "name":nombres.value,
+                "lastName": apellidos.value,
+                "phone": telefono.value
+            }
         }
         )
       }).then(res=>{
@@ -89,14 +89,16 @@ enterpriseForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
     
-    let nombres = document.getElementById("nombreP")
-    let apellidos = document.getElementById("apellidoP")
-    let id = document.getElementById("idP")
-    let telefono = document.getElementById("idP")
+    let nombres = document.getElementById("nombrePEnterprise")
+    let apellidos = document.getElementById("apellidoPEnterprise")
+    let id = document.getElementById("idPEnterprise")
+    let telefono = document.getElementById("telefonoPEnterprise")
     let nit = document.getElementById("inputNitE")
     let nombre = document.getElementById("inputNombreE")
     let telefonoE = document.getElementById("inputTelefonoE") 
     let direccion = document.getElementById("crearUbicacion")
+
+    console.log(id.value,typeof(id.value))
   
     
     
@@ -106,19 +108,19 @@ enterpriseForm.addEventListener('submit', (e) => {
            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username":correo.value,
+            "username":email,
             "person": {
-                "id": id,
-                "name":nombres,
-                "lastName": apellidos,
-                "phone": telefono
+                "id": id.value,
+                "name":nombres.value,
+                "lastName": apellidos.value,
+                "phone": telefono.value
             },
             "enterprise":{
-                "nit": nit,
-                "name": nombre,
-                "location": location,
-                "phone": telefonoE
-            },
+                "nit": nit.value,
+                "name": nombre.value,
+                "location": locationEnterprise,
+                "phone": telefonoE.value
+            }
         }
         )
         }).then(res=>{
@@ -126,9 +128,10 @@ enterpriseForm.addEventListener('submit', (e) => {
             
                 
             return  res.ok ? res.json():Promise.reject(res)
+            //return res.json()
         }).then(json=>{
             
-            console.log(json.message)
+            console.log(json)
         })
         .catch(er=>{
             console.log("Error", er)

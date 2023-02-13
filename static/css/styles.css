@@ -63,3 +63,51 @@
   width: 70%;
   height: 500px;
 }
+
+.imgProduct{
+  width: 400px;
+  height: 400px;
+  text-align: center;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-left: 45px;
+}
+
+
+.fa-brands{
+  font-size: 40px;
+  margin: 0 18px;
+  align-self: center;
+
+}
+
+.fa-brands:hover{
+  font-size: 60px;
+}
+
+.description{
+  text-align: justify;
+}
+
+.divCard{
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  background-color: #111b21;
+  color: #ffff;
+}
+
+.divCard:hover{
+  background-color: #f8f9fa;
+  color:#000;
+
+}
+
+body{
+  background-color: #f8f9fa;
+}
+
+#filterContainer{
+  margin-top: 20px;
+}
