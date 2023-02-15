@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -16,52 +16,42 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../static/img/Page/logo3.png">
+    <script src="https://kit.fontawesome.com/e2089612ce.js" crossorigin="anonymous"></script>
+   
     <title>Product CRUD</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="main.html">BSTORE</a>
+		<img src="../static/img/Page/logo.png" aria-label="Placeholder: 400x400" focusable="false" width="1.8%">
+   		<a class="navbar-brand" href="indexLoginEnterprise.html">BSTORE</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
 			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link active disabled" href="main.html">Principal</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="register.html">Register</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="store.html">Tiendas</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="about.html">¿Quiénes Somos?</a>
-				</li>
+				
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Mi cuenta
+						<span id="user"></span>
+                        <i class="fa-solid fa-user"></i>
 					</a>
 					<div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">Perfil</a>
 						<a class="dropdown-item" href="#">Cambiar contraseña</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+						<a class="dropdown-item" href="#" id="signOut">Cerrar sesión</a>
 					</div>
 				</li>
 			</ul>
 		</div>
 	</nav>
     <div class="container">
-        <h1 class="text-center my-5">Product CRUD</h1>
+        <h1 class="text-center my-5">Mis Productos</h1>
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addProductModal">
             Add Product
         </button>
@@ -180,104 +170,8 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            // Get products list
-            function getProducts() {
-                $.ajax({
-                    url: '',
-                    type: 'GET',
-                    success: function (response) {
-                        let products = JSON.parse(response);
-                        let productList = $('#productList');
-                        productList.html('');
-                        products.forEach(product => {
-                            productList.append(`
-              <tr id="product-${product.id}">
-                <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td>${product.description}</td>
-                <td><img src="${product.image}" alt="" class="img-thumbnail" width="100"></td>
-                <td>
-                  <button type="button" class="btn btn-primary editProductBtn" data-id="${product.id}">Edit</button>
-                  <button type="button" class="btn btn-danger deleteProductBtn" data-id="${product.id}">Delete</button>
-                </td>
-              </tr>`);
-                        });
-                    }
-                });
-            }
-
-            getProducts();
-
-            // Add product
-            $('#addProductForm').submit(function (e) {
-                e.preventDefault();
-                let formData = new FormData(this);
-                $.ajax({
-                    url: '',
-                    type: 'POST',
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        $('#addProductModal').modal('hide');
-                        $('#addProductForm')[0].reset();
-                        getProducts();
-                    }
-                });
-            });
-
-            // Edit product
-            $(document).on('click', '.editProductBtn', function () {
-                let id = $(this).data('id');
-                $.ajax({
-                    url: '',
-                    type: 'GET',
-                    data: { id: id },
-                    success: function (response) {
-                        let product = JSON.parse(response);
-                        $('#editId').val(product.id);
-                        $('#editName').val(product.name);
-                        $('#editPrice').val(product.price);
-                        $('#editDescription').val(product.description);
-                        $('#editImage').val(product.image);
-                        $('#editProductModal').modal('show');
-                    }
-                });
-            });
-            $('#editProductForm').submit(function (e) {
-                e.preventDefault();
-                let formData = new FormData(this);
-                $.ajax({
-                    url: '',
-                    type: 'POST',
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        $('#editProductModal').modal('hide');
-                        $('#editProductForm')[0].reset();
-                        getProducts();
-                    }
-                });
-            });
-
-            // Delete product
-            $(document).on('click', '.deleteProductBtn', function () {
-                let id = $(this).data('id');
-                $.ajax({
-                    url: '',
-                    type: 'GET',
-                    data: { id: id },
-                    success: function (response) {
-                        $(`#product-${id}`).remove();
-                    }
-                });
-            });
-        });
+        
     </script>
 </body>
-
+<script src="../static/js/crudEnterprise.js"></script>
 </html>

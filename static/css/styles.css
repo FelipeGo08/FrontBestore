@@ -96,6 +96,8 @@
   margin-bottom: 20px;
   background-color: #111b21;
   color: #ffff;
+  transition: background-color 1.5s ease;
+  
 }
 
 .divCard:hover{
@@ -103,6 +105,7 @@
   color:#000;
 
 }
+
 
 body{
   background-color: #f8f9fa;

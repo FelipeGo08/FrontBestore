@@ -1,3 +1,9 @@
+var request = new XMLHttpRequest();
+request.open("GET", "/static/json/urls.json", false);
+request.send(null);
+var data = JSON.parse(request.responseText);
+console.log(data);
+
 const formButton = document.getElementById("registerForm")
 let response = document.getElementById("response")
 formButton.addEventListener('submit', (e) => {
@@ -10,7 +16,7 @@ formButton.addEventListener('submit', (e) => {
 
     if(pass.value == passConfirm.value){
         
-        fetch("http://localhost:8080/api/site/register",{
+        fetch(data.apis.register,{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'

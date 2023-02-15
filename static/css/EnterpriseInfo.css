@@ -9,6 +9,33 @@
   width: 400px;
   height: 400px;
   text-align: center;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.fa-whatsapp{
+  font-size: 20px;
+}
+
+.divCard{
+  background: #d4d7ff;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  transition: background-color 1.5s ease;
+}
+
+.divCard:hover{
+  background: #b1b1b1;
+}
+
+.description{
+  text-align: justify;
+}
+
+.wsp{
+  margin-right: 1.5rem;
 }
 
 

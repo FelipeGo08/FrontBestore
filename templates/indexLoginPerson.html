@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../static/css/extras.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="../static/css/indexlogin.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -15,13 +15,15 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../static/img/Page/logo3.png">
+    <script src="https://kit.fontawesome.com/e2089612ce.js" crossorigin="anonymous"></script>
+   
   <title>Index usuario</title>
 </head>
 
 <body class="img-fluid">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <img src="../static/img/Page/logo.png" aria-label="Placeholder: 400x400" focusable="false" width="1.8%">
-    <a class="navbar-brand" href="indexLogin.html">BSTORE</a>
+    <a class="navbar-brand" href="indexLoginPerson.html">BSTORE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -39,13 +41,14 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Mi cuenta
+            <span id="user"></span>
+            <i class="fa-solid fa-user"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Perfil</a>
             <a class="dropdown-item" href="#">Cambiar contraseña</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+            <a class="dropdown-item"  id ="signOut" href="#">Cerrar sesión</a>
           </div>
         </li>
       </ul>
@@ -54,5 +57,6 @@
 
 
 </body>
+<script src="../static/js/userSingin.js"></script>
 
 </html>

@@ -1,3 +1,9 @@
+var request = new XMLHttpRequest();
+request.open("GET", "/static/json/urls.json", false);
+request.send(null);
+var data = JSON.parse(request.responseText);
+console.log(data);
+
 const valores = window.location.search
 const urlParams = new URLSearchParams(valores);
 
@@ -46,12 +52,8 @@ personForm.addEventListener('submit', (e) => {
     let apellidos = document.getElementById("apellidoP")
     let id = document.getElementById("idP")
     let telefono = document.getElementById("telefonoP")
-    
-
-
   
-  
-    fetch("http://localhost:8080/api/site/lastStep",{
+    fetch(data.apis.last_step,{
         method:'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -102,7 +104,7 @@ enterpriseForm.addEventListener('submit', (e) => {
   
     
     
-    fetch("http://localhost:8080/api/site/lastStep",{
+    fetch(data.apis.last_step,{
         method:'POST',
         headers: {
            'Content-Type': 'application/json'

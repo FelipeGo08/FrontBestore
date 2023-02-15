@@ -1,14 +1,17 @@
 const formButton = document.getElementById("formLogin")
 const respuesta = document.getElementById("response")
+var request = new XMLHttpRequest();
+request.open("GET", "/static/json/urls.json", false);
+request.send(null);
+var data = JSON.parse(request.responseText);
+console.log(data);
+
 formButton.addEventListener('submit', (e) => {
   e.preventDefault();
 
-
-  let correo = document.getElementById("inputEmail")
-  let pass = document.getElementById("inputPassword")
-
-
-    let res=   fetch("http://localhost:8080/api/site/login",{
+    let correo = document.getElementById("inputEmail")
+    let pass = document.getElementById("inputPassword")
+    fetch(data.apis.login,{
         method:'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -32,14 +35,59 @@ formButton.addEventListener('submit', (e) => {
         
         respuesta.innerHTML=""
         console.log(json)
-        console.log(json.response.token)
-        //document.cookie = "session="+json.message+";path=/"
+        let token =json.response.token
+        console.log(token)
+        let decoded 
+        try {
+            decoded = decodeJWT(token)
+            console.log(decoded)
+           
+        } catch (error) {
+            console.error(error);
+            
+        }
+    
+        document.cookie = "session="+token+";path=/"
+        if(decoded.role =="ENTERPRISE"){
+            window.location.replace(data.pages.login_enterprise)
+        }
+            
+        if(decoded.role =="USER"){
+            window.location.replace(data.pages.login_person)
+        }
+            
+        
     })
     .catch(er=>{
         console.log("Error", er)
     }).finally(()=>{
         console.log("Promesa recibida")
     })
-    
-});
 
+})
+
+
+    
+
+function decodeJWT(token) {
+  
+  const parts = token.split('.');
+
+  if (parts.length !== 3) {
+    throw new Error('Invalid token');
+  }
+
+  const header = JSON.parse(atob(parts[0]));
+  const payload = JSON.parse(atob(parts[1]));
+  const signature = parts[2];
+
+
+  const secret = 'secret-key';
+  const expectedSignature = btoa(`${parts[0]}.${parts[1]}`);
+
+  /*if (signature !== expectedSignature) {
+    throw new Error('Invalid signature');
+  }*/
+
+  return payload;
+}
