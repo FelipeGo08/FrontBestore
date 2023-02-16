@@ -11,6 +11,11 @@ let email = urlParams.get('email');
 console.log(email)
 console.log(valores);
 
+if (email == null){
+    window.location.replace(data.pages.login)
+    
+}
+
 let locationEnterprise = "4.148862,-73.621603"
 
 var direccion = document.getElementById("crearUbicacion");
@@ -69,10 +74,12 @@ personForm.addEventListener('submit', (e) => {
         }
         )
       }).then(res=>{
-          console.log(res)
+            console.log(res)
           
-              
-          return  res.ok ? res.json():Promise.reject(res)
+            if (res.ok){
+                window.location.replace(data.pages.login)
+            }
+            return  res.ok ? res.json():Promise.reject(res)
       }).then(json=>{
           
           console.log(json)
@@ -128,7 +135,9 @@ enterpriseForm.addEventListener('submit', (e) => {
         }).then(res=>{
             console.log(res)
             
-                
+            if (res.ok){
+                window.location.replace(data.pages.login)
+            }
             return  res.ok ? res.json():Promise.reject(res)
             //return res.json()
         }).then(json=>{

@@ -1,3 +1,17 @@
 #user{
     margin-left: 20px;
 }
+
+#infoperson{
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+#infoEnterprise{
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}

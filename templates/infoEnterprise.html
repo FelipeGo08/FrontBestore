@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../static/css/extras.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="../static/css/indexlogin.css" media="screen">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" href="../static/img/Page/logo3.png">
       <script src="https://kit.fontawesome.com/e2089612ce.js" crossorigin="anonymous"></script>
       <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <title>Index Empresa</title>
+  <title>Informacion Empresa</title>
 </head>
 
 <body class="img-fluid">
@@ -52,8 +52,24 @@
     </div>
   </nav>
 
+  <div class="card mb-3" id="infoEnterprise">
+    <img class="card-img-top" id="imgEnterprise" alt="imagen empresa">
+    <div class="card-body">
+      <h5 class="card-title" id ="nameEnterprise">Card title</h5>
+      <p class="card-text" id="nit" ></p>
+      <p class="card-text" id="phone" ></p>
+      <p class="card-text" id="email" ></p>
+      <hr>
+      <h5 class="card-title">Representante legal</h5>
+      <p class="card-text" id="idPerson"></p>
+      <p class="card-text" id="name" ></p>
+      <p class="card-text" id="lastNamePerson" ></p>
+      <p class="card-text" id="phonePerson" ></p>
+      
+    </div>
+  </div>
 
 </body>
-<script src="../static/js/enterpriseSignin.js"></script>
+<script src="../static/js/infoEnterprise.js"></script>
 
 </html>

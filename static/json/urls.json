@@ -9,11 +9,13 @@
         "last_step":"https://bestore-s3.herokuapp.com/api/site/lastStep",
         "register":"https://bestore-s3.herokuapp.com/api/site/register",
         "add_product":"https://bestore-s3.herokuapp.com/api/enterprise/addProduct",
-        "delete_product":"https://bestore-s3.herokuapp.com/api/enterprise/deleteProduct"
+        "delete_product":"https://bestore-s3.herokuapp.com/api/enterprise/deleteProduct",
+        "edit_product":"https://bestore-s3.herokuapp.com/api/enterprise/updateProduct",
+        "me_user":"https://bestore-s3.herokuapp.com/api/costumer/me"
     },
     "pages":{
-        "login":"http://127.0.0.1:5500/templates/login.html",
-        "login_person":"http://127.0.0.1:5500/templates/indexLoginPerson.html",
-        "login_enterprise":"http://127.0.0.1:5500/templates/indexLoginEnterprise.html"
+        "login":"https://bestore-unillanos.000webhostapp.com/templates/login.html",
+        "login_person":"https://bestore-unillanos.000webhostapp.com/templates/indexLoginPerson.html",
+        "login_enterprise":"https://bestore-unillanos.000webhostapp.com/templates/indexLoginEnterprise.html"
     }
 }

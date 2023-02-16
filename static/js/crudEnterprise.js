@@ -108,7 +108,7 @@
         let elementosFila = elemento.getElementsByTagName("td");
 
         
-
+            $('#editCode').val(elementosFila[0].innerHTML);
             $('#editName').val(elementosFila[1].innerHTML);
             $('#editPrice').val(elementosFila[2].innerHTML);
             $('#editDescription').val(elementosFila[3].innerHTML);
@@ -138,12 +138,9 @@
         }).then(json=>{
             console.log(json)
             alert("Producto eliminado satisfactoriamente")
-
-            function mostrarMensaje() {
-                location.reload()
-            }
+            location.reload()
             
-            window.addEventListener("click", mostrarMensaje);
+            
         })
         .catch(er=>{
             console.log("Error", er)
@@ -182,6 +179,51 @@
         }).then(json=>{
             console.log(json)
             alert("producto agregado satisfactoriamente")
+
+            function mostrarMensaje() {
+                location.reload()
+            }
+              
+            window.addEventListener("click", mostrarMensaje);
+        })
+        .catch(er=>{
+            console.log("Error", er)
+        }).finally(()=>{
+            console.log("Promesa recibida")
+        })
+
+    })
+
+    let formEditProduct = document.getElementById("editProductForm")
+
+    formEditProduct.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let code = document.getElementById("editCode")
+        let name = document.getElementById("editName")
+        let price = document.getElementById("editPrice")
+        let description = document.getElementById("editDescription")
+        let image = document.getElementById("editImage")
+
+        const formData = new FormData();
+        formData.append("code", code.value)
+        formData.append("name", name.value)
+        formData.append("description", description.value)
+        formData.append("price", price.value)
+        formData.append("image", image.files[0])
+
+        fetch(data.apis.edit_product,{
+            method:'PUT',
+            headers: {
+                "Authorization": "Bearer " + valor
+            },
+            body: formData
+        }).then(res=>{
+            console.log(res)
+
+            return  res.ok ? res.json():Promise.reject(res)
+        }).then(json=>{
+            console.log(json)
+            alert("producto editado satisfactoriamente")
 
             function mostrarMensaje() {
                 location.reload()
