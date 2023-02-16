@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -17,7 +18,7 @@
         crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../static/img/Page/logo3.png">
     <script src="https://kit.fontawesome.com/e2089612ce.js" crossorigin="anonymous"></script>
-   
+    <link href="../static/css/styles.css">
     <title>Product CRUD</title>
 </head>
 
@@ -58,6 +59,7 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
+                    <th>Code</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Descripción</th>
@@ -116,11 +118,13 @@
                             <small class="form-text text-muted">Accepts only png and jpeg files with size less than 20
                                 MB.</small>
                         </div>
+                    
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" >Save</button>
+                    </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addProduct()">Save</button>
                 </div>
             </div>
         </div>

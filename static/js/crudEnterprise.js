@@ -77,7 +77,8 @@
                 productList.html('');
                 products.forEach(product => {
                     productList.append(`
-      <tr id="product-${product.id}">
+        <tr id="product-${product.id}">
+        <td>${product.code}</td>
         <td>${product.name}</td>
         <td>${product.price}</td>
         <td>${product.description}</td>
@@ -106,17 +107,96 @@
         let elemento = document.getElementById(`product-${id}`)
         let elementosFila = elemento.getElementsByTagName("td");
 
-        console.log(elementosFila[3].innerHTML)
         
 
-            $('#editName').val(elementosFila[0].innerHTML);
-            $('#editPrice').val(elementosFila[1].innerHTML);
-            $('#editDescription').val(elementosFila[2].innerHTML);
+            $('#editName').val(elementosFila[1].innerHTML);
+            $('#editPrice').val(elementosFila[2].innerHTML);
+            $('#editDescription').val(elementosFila[3].innerHTML);
             $('#editImage').val();
             jQuery.noConflict();
             $('#editProductModal').modal('show');
             
     });
+
+    $(document).on('click', '.deleteProductBtn', function () {
+        let id = $(this).data('id');
+        let elemento = document.getElementById(`product-${id}`)
+        let elementosFila = elemento.getElementsByTagName("td");
+        
+        let code = elementosFila[0].innerHTML
+        console.log(code)
+
+        fetch(data.apis.delete_product+"/"+code,{
+            method:'DELETE',
+            headers: {
+                "Authorization": "Bearer " + valor
+            }
+        }).then(res=>{
+            console.log(res)
+
+            return  res.ok ? res.json():Promise.reject(res)
+        }).then(json=>{
+            console.log(json)
+            alert("Producto eliminado satisfactoriamente")
+
+            function mostrarMensaje() {
+                location.reload()
+            }
+            
+            window.addEventListener("click", mostrarMensaje);
+        })
+        .catch(er=>{
+            console.log("Error", er)
+        }).finally(()=>{
+            console.log("Promesa recibida")
+        })
+        
+            
+    });
+
+    let formaddProduct = document.getElementById("addProductForm")
+
+    formaddProduct.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let name = document.getElementById("name")
+        let price = document.getElementById("price")
+        let description = document.getElementById("productDescription")
+        let image = document.getElementById("image")
+
+        const formData = new FormData();
+        formData.append("name", name.value)
+        formData.append("description", description.value)
+        formData.append("price", price.value)
+        formData.append("image", image.files[0])
+
+        fetch(data.apis.add_product,{
+            method:'POST',
+            headers: {
+                "Authorization": "Bearer " + valor
+            },
+            body: formData
+        }).then(res=>{
+            console.log(res)
+
+            return  res.ok ? res.json():Promise.reject(res)
+        }).then(json=>{
+            console.log(json)
+            alert("producto agregado satisfactoriamente")
+
+            function mostrarMensaje() {
+                location.reload()
+            }
+              
+            window.addEventListener("click", mostrarMensaje);
+        })
+        .catch(er=>{
+            console.log("Error", er)
+        }).finally(()=>{
+            console.log("Promesa recibida")
+        })
+
+    })
+
 })();
 
 function decodeJWT(token) {

@@ -1,17 +1,19 @@
 {
     "apis":{
-        "login":"http://15.228.121.152:8080/api/site/login",
-        "enterprises":"http://15.228.121.152:8080/api/enterprise/findAll",
-        "products_enterprise":"http://15.228.121.152:8080/api/enterprise/findAllProductsById",
-        "me_enterprise":"http://15.228.121.152:8080/api/enterprise/me",
-        "filter_by_product_name":"http://15.228.121.152:8080/api/enterprise/findProductsByName",
-        "filter_by_enterprise_name":"http://15.228.121.152:8080/api/enterprise/findProductsByEnterpriseName",
-        "last_step":"http://15.228.121.152:8080/api/site/lastStep",
-        "register":"http://15.228.121.152:8080/api/site/register"
+        "login":"https://bestore-s3.herokuapp.com/api/site/login",
+        "enterprises":"https://bestore-s3.herokuapp.com/api/enterprise/findAll",
+        "products_enterprise":"https://bestore-s3.herokuapp.com/api/enterprise/findAllProductsById",
+        "me_enterprise":"https://bestore-s3.herokuapp.com/api/enterprise/me",
+        "filter_by_product_name":"https://bestore-s3.herokuapp.com/api/enterprise/findProductsByName",
+        "filter_by_enterprise_name":"https://bestore-s3.herokuapp.com/api/enterprise/findProductsByEnterpriseName",
+        "last_step":"https://bestore-s3.herokuapp.com/api/site/lastStep",
+        "register":"https://bestore-s3.herokuapp.com/api/site/register",
+        "add_product":"https://bestore-s3.herokuapp.com/api/enterprise/addProduct",
+        "delete_product":"https://bestore-s3.herokuapp.com/api/enterprise/deleteProduct"
     },
     "pages":{
-        "login":"https://bestore-unillanos.000webhostapp.com/templates/login.html",
-        "login_person":"https://bestore-unillanos.000webhostapp.com/templates/indexLoginPerson.html",
-        "login_enterprise":"https://bestore-unillanos.000webhostapp.com/templates/indexLoginEnterprise.html"
+        "login":"http://127.0.0.1:5500/templates/login.html",
+        "login_person":"http://127.0.0.1:5500/templates/indexLoginPerson.html",
+        "login_enterprise":"http://127.0.0.1:5500/templates/indexLoginEnterprise.html"
     }
 }

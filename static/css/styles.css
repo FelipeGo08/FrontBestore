@@ -114,3 +114,7 @@ body{
 #filterContainer{
   margin-top: 20px;
 }
+
+#code{
+  width: 20px;
+}
