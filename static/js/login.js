@@ -24,17 +24,18 @@ formButton.addEventListener('submit', (e) => {
     }).then(res=>{
         console.log(res)
         
-        if(res.redirected){
-            window.location.replace(res.url)
-        }  
+          
         if(!res.ok)
             respuesta.innerHTML="Datos incorrectos, error de autenticación"
             
         return  res.ok ? res.json():Promise.reject(res)
     }).then(json=>{
         
-        respuesta.innerHTML=""
         console.log(json)
+        if(json.response.route!=null){
+            window.location.replace(json.response.route)
+        }
+        
         let token =json.response.token
         console.log(token)
         let decoded 
