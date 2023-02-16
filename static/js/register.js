@@ -7,7 +7,7 @@ console.log(data);
 const formButton = document.getElementById("registerForm")
 let response = document.getElementById("response")
 formButton.addEventListener('submit', (e) => {
-  e.preventDefault();
+ if(validarCaptcha()) {e.preventDefault();
 
 
     let correo = document.getElementById("inputEmail")
@@ -45,7 +45,9 @@ formButton.addEventListener('submit', (e) => {
         
         response.innerHTML="Las contraseñas no coinciden"
     }
-
+}else{
+    alert("Valide el captcha")
+}
     
     
 });

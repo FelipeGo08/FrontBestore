@@ -11,7 +11,8 @@
         "add_product":"https://bestore-s3.herokuapp.com/api/enterprise/addProduct",
         "delete_product":"https://bestore-s3.herokuapp.com/api/enterprise/deleteProduct",
         "edit_product":"https://bestore-s3.herokuapp.com/api/enterprise/updateProduct",
-        "me_user":"https://bestore-s3.herokuapp.com/api/costumer/me"
+        "me_user":"https://bestore-s3.herokuapp.com/api/costumer/me",
+        "enterprise_image":"https://bestore-s3.herokuapp.com/api/enterprise/uploadImage"
     },
     "pages":{
         "login":"https://bestore-unillanos.000webhostapp.com/templates/login.html",

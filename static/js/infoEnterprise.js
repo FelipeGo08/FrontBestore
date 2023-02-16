@@ -77,7 +77,7 @@ fetch(data.apis.me_enterprise,{
    phonePerson.innerHTML=`Contacto representante: ${json.response.person.phone}`
 
 
-     
+  
         
     
 })
@@ -85,6 +85,37 @@ fetch(data.apis.me_enterprise,{
     console.log("Error", er)
 }).finally(()=>{
     console.log("Promesa recibida")
+})
+
+let formaddImg = document.getElementById("addImg")
+
+formaddImg.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image.files[0])
+
+      fetch(data.apis.enterprise_image,{
+            method:'POST',
+            headers: {
+                "Authorization": "Bearer " + valor
+            },
+            body: formData
+        }).then(res=>{
+            console.log(res)
+
+            return  res.ok ? res.json():Promise.reject(res)
+        }).then(json=>{
+            console.log(json)
+            alert("imagen subida")
+
+            
+        })
+        .catch(er=>{
+            console.log("Error", er)
+        }).finally(()=>{
+            console.log("Promesa recibida")
+        })
+
 })
 
 
